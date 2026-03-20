@@ -1,6 +1,6 @@
-// if(process.env.NODE_ENV != "production"){
-//    require("dotenv").config();
-// }
+if(process.env.NODE_ENV != "production"){
+   require("dotenv").config();
+}
 
 const express=require('express');
 const app=express();
@@ -62,7 +62,9 @@ app.use((req,res,next)=>{
 app.use("/listings",listingRoutes);
 app.use("/listings/:id/reviews",reviewRoutes);
 app.use("/",userRoutes);
-
+app.get("/",(req,res)=>{
+    res.redirect("/listings")
+})
 main()
 .then(()=>{
     console.log("connect to DB");
