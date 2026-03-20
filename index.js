@@ -30,7 +30,7 @@ app.use(methodoverride("_method"));
 app.engine("ejs",ejsMate);
 
 const store=MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:process.env.DB_LINK,
     crypto:{
         secret:process.env.SECRET
     },
@@ -73,7 +73,7 @@ main()
 });
 
 async function main(){
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(process.env.DB_LINK);
 }
 
 app.use((req,res,next)=>{
