@@ -10,7 +10,7 @@ const mongoose=require("mongoose");
 const path=require("path");
 const methodoverride=require('method-override');
 const ejsMate=require("ejs-mate")
-const dbUrl=process.env.dbLink
+const dbUrl=process.env.DB_LINK
 const ExpressError = require("./utils/ExpressError.js");
 const listingRoutes=require("./routes/listingRoutes.js");
 const reviewRoutes=require("./routes/reviewRoutes.js");
@@ -32,7 +32,7 @@ app.engine("ejs",ejsMate);
 const store=MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
-        secret:process.env.Secret
+        secret:process.env.SECRET
     },
     touchAfter:24*3600
 })
@@ -41,7 +41,7 @@ store.on("error",(error)=>{
 })
 const sessionOptions={
     store,
-    secret:process.env.Secret,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true
 }
