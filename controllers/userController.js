@@ -9,7 +9,6 @@ module.exports.signUp=async (req,res,next)=>{
     let {username,email,password}=req.body;
     let user1=new User({email,username})
     const registerUser=await User.register(user1,password)
-    console.log(registerUser);
     req.login(registerUser,(err)=>{
         if(err){
             return next(err)
@@ -31,7 +30,6 @@ module.exports.renderLoginForm=(req,res)=>{
 module.exports.login= async (req,res)=>{
     req.flash("success","welcome to wanderlust");
     let redirectUrl=res.locals.redirectUrl || "/listings";
-    console.log(redirectUrl);
     res.redirect(redirectUrl);
 }
 module.exports.Logout=(req,res,next)=>{

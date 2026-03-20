@@ -125,3 +125,36 @@ body{
 #map{
     border:.1rem solid green
 }
+        /* filter styling start */
+#filters{
+    display: flex;
+}
+.filter{
+    text-align: center;
+    margin-right: 3rem;
+    font-size:1rem; 
+    opacity: 0.7;
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+ .filter>p{
+    font-size: 0.8rem;
+ }
+#icon{
+    font-size:1.4rem;
+}
+.taxToggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .1rem solid black;
+    width: 18rem;
+    height: 3rem;
+    border-radius: 1rem;
+}
+.taxRate{
+    display: none;
+}
+        /* filter styling end */

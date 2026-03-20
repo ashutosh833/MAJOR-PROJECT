@@ -70,7 +70,7 @@
 
 
 <%if(showListing.reviews&&showListing.reviews.length){%>
-     <h4 style="text-align: center;">All Reviews</h4><hr>
+     <h4 style="text-align:center;">All Reviews</h4><hr>
     <div class="reviews">
         <%for(review of showListing.reviews){%>
                  <div class="card border col-6 mb-3" style="width: 18rem;">
@@ -104,5 +104,4 @@
     const coordinates= <%-JSON.stringify(showListing.geometry.coordinates)%>;
     const tileUrl = "<%= tileUrl %>";
 </script>
-<!-- <script src="/js/map.js"></script> -->
 </body>

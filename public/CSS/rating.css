@@ -120,6 +120,8 @@
   background-position: 0 -30px;
 }
 
+
+
 .starability-slot > label::before {
   content: '';
   position: absolute;
@@ -183,6 +185,7 @@
     font-size: 1em;
     color: inherit;
     background: none;
+    
   }
   .starability-slot > label::before, .starability-slot > label::after {
     display: none;

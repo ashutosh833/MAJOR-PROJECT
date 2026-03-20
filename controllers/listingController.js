@@ -13,12 +13,10 @@ module.exports.renderNewForm=(req,res)=>{
 module.exports.showListing=async(req,res)=>{
     let {id}=req.params;
     let showListing=await Listing.findById(id).populate({path:"reviews",populate:{path:"commenter",},}).populate("owner");
-    console.log(showListing)
     if(!showListing){
         req.flash("error","listing you are searching for is unavailable");
         return res.redirect("/listings");
     }else{
-    console.log(showListing)
     res.render("./listings/show.ejs",{showListing,tileUrl: process.env.API_MAP });
     }
 }

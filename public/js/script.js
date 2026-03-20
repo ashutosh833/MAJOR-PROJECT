@@ -18,7 +18,40 @@
   }, false);
 })();
 
+const stars = document.querySelectorAll(".star");
 
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    let value = star.getAttribute("data-value");
+
+    stars.forEach(s => {
+      s.classList.remove("active");
+      if (s.getAttribute("data-value") <= value) {
+        s.classList.add("active");
+      }
+    });
+  });
+});
+
+
+// taxes logic start
+let showTaxes=document.getElementById("flexSwitchCheckDefault");
+   let taxRate=document.getElementsByClassName("taxRate");
+   showTaxes.addEventListener("click",()=>{
+       console.log(taxRate)
+       for(tax of taxRate){
+           if(tax.style.display=="inline"){
+               tax.style.display="none"
+           }else{
+               tax.style.display="inline"
+           }
+       }
+   })
+// taxes logic end
+
+//remove flash code start
+
+//remove flash code end
 
 
 
