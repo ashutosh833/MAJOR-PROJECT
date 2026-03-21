@@ -14,10 +14,14 @@ const reviewSchema=new Schema({
         min:1,
         max:5
     },
-    createdAt:{
-        type:Date,
-        default:Date.now()
-    }
-})
+    // createdAt:{
+    //     type:Date,
+    //     default:Date.now()
+    // }
+},{ timestamps: true })
+// 👉 This automatically creates:
+
+// createdAt
+// updatedAt
 
 module.exports=mongoose.model("Review",reviewSchema);

@@ -1,6 +1,5 @@
 const Listing=require("../models/listing");
 const {getCoordinates}=require("../js/script.js");
-// const { response } = require("express");
 
 module.exports.index=async(req,res,next)=>{
     const allListings = await Listing.find({});

@@ -1,14 +1,15 @@
 if(process.env.NODE_ENV != "production"){
    require("dotenv").config();
 }
-
+const dayjs = require("dayjs");
+const relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
 const express=require('express');
 const app=express();
 const mongoose=require("mongoose");
 const path=require("path");
 const methodoverride=require('method-override');
 const ejsMate=require("ejs-mate")
-const dbUrl=process.env.DB_LINK
 const ExpressError = require("./utils/ExpressError.js");
 const listingRoutes=require("./routes/listingRoutes.js");
 const reviewRoutes=require("./routes/reviewRoutes.js");
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.use(methodoverride("_method"));
 app.engine("ejs",ejsMate);
+app.locals.dayjs = dayjs; // make available in EJS
 
 const store=MongoStore.create({
     mongoUrl:process.env.DB_LINK,
@@ -56,6 +58,7 @@ app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
     res.locals.currUser=req.user;
+    console.log(req.user)
     next();
 })
 

@@ -75,16 +75,23 @@
         <%for(review of showListing.reviews){%>
                  <div class="card border col-6 mb-3" style="width: 18rem;">
                     <div class="card-body review-card">
-                <h5 class="card-title"><%=review.commenter.username%></h5>
+                <h5 class="card-title">@<%=review.commenter.username%></h5>
+               <small class="text-muted">
+                <%= dayjs(review.createdAt).fromNow() %>
+              </small>
                 <p class="card-text"><%=review.comment%></p>
                  
   <p class="starability-result" data-rating="<%=review.rating%>">
     Rated:<%=review.rating%>star
   </p>
-                <form class="mb-3" action="/listings/<%=showListing._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
 
-                    <button class="btn btn-dark">Delete</button>
-                </form>
+<%if(review.commenter._id.equals(currUser._id)){%>
+  <form class="mb-3" action="/listings/<%=showListing._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
+        <button class="btn btn-dark">Delete</button>
+  </form>
+<%}%>
+
+                
                     </div>
                     </div>
                 
