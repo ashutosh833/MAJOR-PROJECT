@@ -49,21 +49,27 @@ module.exports.renderEditForm=async(req,res,next)=>{
 // c_scale,w_200 makes it smaller (width 200px).
 // e_blur:100 adds blur (use 1 to 2000; higher = blurrier).
 
-module.exports.updateListing=async(req,res,next)=>{
-    let {id}=req.params;
-    let listing=await Listing.findByIdAndUpdate(id,{...req.body.listing});
-    let cata=listing.country.toLowerCase();
-    listing=await Listing.findByIdAndUpdate(id,{catagory:cata});
-    if(typeof req.file!=="undefined"){
-    let url=req.file.path;
-    let filename=req.file.filename;
-    listing.image={url,filename}
-    await listing.save()
-     }
-    req.flash("success","listing updated successfully");
+module.exports.updateListing = async (req, res, next) => {
+    let { id } = req.params;
 
-    res.redirect(`/listings/${id}`)
-}
+    // ✅ set category BEFORE updating
+    req.body.listing.catagory = req.body.listing.country.toLowerCase();
+    let listing = await Listing.findByIdAndUpdate(
+        id,
+        { ...req.body.listing },
+        { new: true } // ✅ always use this
+    );
+
+    if (typeof req.file !== "undefined") {
+        let url = req.file.path;
+        let filename = req.file.filename;
+        listing.image = { url, filename };
+        await listing.save();
+    }
+console.log(listing)
+    req.flash("success", "listing updated successfully");
+    res.redirect(`/listings/${id}`);
+};
 module.exports.createListing = async (req, res, next) => {
     let url = req.file.path;
     let filename = req.file.filename;
