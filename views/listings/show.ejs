@@ -85,7 +85,7 @@
     Rated:<%=review.rating%>star
   </p>
 
-<%if(review.commenter._id.equals(currUser._id)){%>
+<% if(currUser && review.commenter && review.commenter._id.equals(currUser._id)) { %>
   <form class="mb-3" action="/listings/<%=showListing._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
         <button class="btn btn-dark">Delete</button>
   </form>
