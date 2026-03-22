@@ -16,9 +16,11 @@ async function main(){
 
 const initDB = async () => {
     await Listing.deleteMany({});
+    console.log("you recreated")
 
     initData.data = initData.data.map((obj) => ({
         ...obj,
+        catagory:"india",
         owner:"69b29e6e5c6009a7dc65ebe4",
         geometry: {
         type: "Point",

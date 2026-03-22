@@ -22,6 +22,10 @@ const listingSchema=new Schema({
         type:Schema.Types.ObjectId,
         ref:"User"
     },
+    catagory:{
+        type:String,
+        enum:["india","china","america","europe","dubai","australia","south africa","venezuella"]
+    },
     geometry: {
         type: {
         type: String, // Don't do `{ location: { type: String } }`
@@ -31,7 +35,7 @@ const listingSchema=new Schema({
     coordinates: {
         type: [Number],
         required: true
-    }   
+    }  
   }
 });
 listingSchema.post("findOneAndDelete",async(listing)=>{

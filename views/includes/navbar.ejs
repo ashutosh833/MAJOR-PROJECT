@@ -34,10 +34,12 @@
        
       </div>
       <div class="searchBox">
-        <input type="text" id="searchHere" placeholder="Search catagory of listing" class="searchBar">
+        <form action="/listings" method="get">
+        <input type="text" id="searchHere" placeholder="search listing based on country" class="searchBar" name="searchItem">
        <label for="searchHere"><button  class="searchBtn">
         search <i class="fa-solid fa-magnifying-glass"></i>
       </button></label>
+      </form>
       </div>
       <div class="navbar-nav ms-auto">
          <a class="nav-link" href="/listings/new">Airbnb your home</a>

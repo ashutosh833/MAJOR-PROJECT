@@ -2,8 +2,23 @@ const Listing=require("../models/listing");
 const {getCoordinates}=require("../js/script.js");
 
 module.exports.index=async(req,res,next)=>{
-    const allListings = await Listing.find({});
-    res.render("./listings/index.ejs",{allListings});
+    let {searchItem}=req.query;
+    let allListings;
+
+    if(!searchItem){
+        searchItem="showall"
+        allListings = await Listing.find({});
+    }else{
+        searchItem=searchItem.toLowerCase();
+        allListings = await Listing.find({catagory:searchItem});
+        console.log(allListings.length,"hi")
+        if(allListings.length==0){
+            req.flash("error",`No listing available on your request`);
+            return res.redirect("/listings")
+        }
+    }
+    // console.log(searchItem,allListings)
+    res.render("./listings/index.ejs",{allListings,searchItem});
 }
 
 module.exports.renderNewForm=(req,res)=>{
@@ -37,6 +52,8 @@ module.exports.renderEditForm=async(req,res,next)=>{
 module.exports.updateListing=async(req,res,next)=>{
     let {id}=req.params;
     let listing=await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    let cata=listing.country.toLowerCase();
+    listing=await Listing.findByIdAndUpdate(id,{catagory:cata});
     if(typeof req.file!=="undefined"){
     let url=req.file.path;
     let filename=req.file.filename;
@@ -44,6 +61,7 @@ module.exports.updateListing=async(req,res,next)=>{
     await listing.save()
      }
     req.flash("success","listing updated successfully");
+
     res.redirect(`/listings/${id}`)
 }
 module.exports.createListing = async (req, res, next) => {
@@ -51,6 +69,7 @@ module.exports.createListing = async (req, res, next) => {
     let filename = req.file.filename;
 
     const newlisting = new Listing(req.body.listing);
+    newlisting.catagory=newlisting.country.toLowerCase();
 
     // ✅ get coordinates from location
     const coordinate = await getCoordinates(newlisting.location);
