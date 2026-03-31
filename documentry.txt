@@ -104,3 +104,4 @@ category: {
 }
 
 👉 Later you can reuse categories in frontend also 🔥
+

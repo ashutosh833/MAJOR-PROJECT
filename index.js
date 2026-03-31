@@ -58,9 +58,10 @@ app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
     res.locals.currUser=req.user;
-    console.log(req.user)
+    // console.log(req.user)
     next();
 })
+
 
 app.use("/listings",listingRoutes);
 app.use("/listings/:id/reviews",reviewRoutes);
@@ -87,6 +88,7 @@ app.use((err,req,res,next)=>{
     let {statusCode=500,message="something went wrong!"}=err;
     res.status(statusCode).render("./listings/error.ejs",{message});
 })
+
 
 app.listen(8080,()=>{
     console.log("server is listening");

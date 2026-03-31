@@ -16,7 +16,7 @@
                 <div class="invalid-feedback"> Short Description should be valid</div>                
                 
             </div>
-             <div class="mb-3">
+             <div class="mb-3 col-12 ">
                     <p>Present Image</p>
                     <img src="<%=showListing.image.url%>"><br>     
             </div>
@@ -41,7 +41,16 @@
              <div class="mb-3">
                     <label for="location" class="form-label">location:</label>
                     <input type="text" value="<%=showListing.location%>" name="listing[location]" class="form-control"required><br>
-             <div class="invalid-feedback">Locaton should be valid</div>
+             <div class="invalid-feedback">Locaton should be valid</div><br><br>
+               <select name="listing[category2]">
+                    <option value="category" disabled selected>category2</option>
+                    <option value="mountain">mountain</option>
+                    <option value="castle">castle</option>
+                    <option value="amazing pool">amazing pool</option>
+                    <option value="camp">camp</option>
+                    <option value="farm">farm</option>
+                    <option value="iconic cities">Iconic Cities</option>
+                </select><br><br>
 
 
             </div>

@@ -1,46 +1,101 @@
 <%layout("/layouts/boilerplate")%>
 <body><br>
-    
+<style>
+     #filters>a{
+          text-decoration: none;
+          text-shadow: 2px;
+          color: black;
+     }
+</style>
 <div id="filters">
-    <div class="filter">
-        <i class="fa-solid fa-fire" id="icon"></i>
-        <p>Trending</p>
-   </div>
+     <a href="/listings/trending">
+     <div class="filter">
+          <i class="fa-solid fa-fire" id="icon"></i>
+          <p>Trending</p>
+     </div>
+     </a>
+
    <div class="filter">
         <i class="fa-solid fa-bed" id="icon"></i>
         <p>Rooms</p>
    </div>
-    <div class="filter">
+   <a href="/listings/cities">
+         <div class="filter">
         <i class="fa-solid fa-mountain-city" id="icon"></i>
         <p>Iconic Cities</p>
    </div>
+   </a>
+   <a href="/listings/mountain">
       <div class="filter">
         <i class="fa-solid fa-mountain" id="icon"></i>
         <p>Mountain</p>
    </div>
-    <div class="filter">
+   </a>
+   <a href="/listings/castle">
+         <div class="filter">
         <i class="fa-solid fa-house" id="icon"></i>
         <p>Castles</p>
    </div>
-       <div class="filter">
+   </a>
+     <a href="/listings/pools">
+      <div class="filter">
         <i class="fa-solid fa-swimmer" id="icon"></i>
         <p>Amazing Pools</p>
    </div>
-    <div class="filter">
-        <i class="fa-solid fa-cow" id="icon"></i>
+     </a>
+     <a href="/listings/farm">
+           <div class="filter">
+        <i class="fa-solid fa-swimmer" id="icon"></i>
         <p>farms</p>
    </div>
-   <div class="filter">
+     </a>
+   <a href="/listings/camping">
+        <div class="filter">
         <i class="fa-solid fa-campground" id="icon"></i>
         <p>camping</p>
    </div>
+   </a>
     <div class="taxToggle">
         <div class="form-check-reverse form-switch"> 
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
          <label class="form-check-label" for="flexSwitchCheckDefault">display total after taxes</label>
     </div>
     </div>
+<div class="dropdown">
+  <button class="btn custom-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+    Filter Price
+  </button>
+
+  <ul class="dropdown-menu custom-menu">
+    <li><a class="dropdown-item" href="/listings?price=10000">Under ₹10000</a></li>
+    <li><a class="dropdown-item" href="?price=20000">Under ₹20000</a></li>
+    <li><a class="dropdown-item" href="?price=50000">Under ₹50000</a></li>
+  </ul>
 </div>
+</div>
+<style>
+     
+     .filterPrice{
+          margin-left: 1rem;
+          width: 11rem;
+          height: 3rem;
+     }
+     .filterPrice .priceFilter{
+          width: 9rem;
+          height: 9rem;
+     }
+    .filterPrice>select{
+          padding: 0.2rem;
+          padding-left: 1rem;
+          border-radius: 1rem;
+          background-color: aliceblue;
+          border: 2px solid rgb(55, 202, 255);
+          font-size: 1.1rem;
+          width: 11;
+          height: 3rem;
+    }
+
+</style>
  
      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
          <% for(let listing of allListings) {%>

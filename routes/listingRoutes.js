@@ -6,6 +6,8 @@ const upload = multer({storage})
 const wrapAsync = require("../utils/wrapAsync.js");
 const { isloggedIn, isOwner, validateListing } = require("../middleware.js");
 const controllerListing = require("../controllers/listingController.js");
+const categoryController = require("../controllers/categoryController.js");
+
 
 routers
 .route("/")
@@ -16,6 +18,16 @@ upload.single("listing[image]"),
 validateListing,
 wrapAsync(controllerListing.createListing),
 );
+
+routers.get("/trending",wrapAsync(categoryController.trendListing))
+routers.get("/camping",wrapAsync(categoryController.campListing))
+routers.get("/pools",wrapAsync(categoryController.poolsListing))
+routers.get("/farm",wrapAsync(categoryController.farmsListing))
+routers.get("/castle",wrapAsync(categoryController.castleListing))
+routers.get("/mountain",wrapAsync(categoryController.mountainListing))
+routers.get("/cities",wrapAsync(categoryController.cityListing))
+
+
 
 routers.get("/new", isloggedIn, controllerListing.renderNewForm);
 

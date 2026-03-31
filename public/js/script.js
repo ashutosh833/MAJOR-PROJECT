@@ -52,7 +52,11 @@ let showTaxes=document.getElementById("flexSwitchCheckDefault");
 //remove flash code start
 
 //remove flash code end
-
+document.querySelectorAll(".dropdown-item").forEach(item => {
+  item.addEventListener("click", function () {
+    document.querySelector(".custom-btn").textContent = this.textContent;
+  });
+});
 
 
 

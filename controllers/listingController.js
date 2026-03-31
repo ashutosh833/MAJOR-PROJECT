@@ -2,23 +2,28 @@ const Listing=require("../models/listing");
 const {getCoordinates}=require("../js/script.js");
 
 module.exports.index=async(req,res,next)=>{
-    let {searchItem}=req.query;
+    let {searchItem,price}=req.query;
     let allListings;
 
+    if(price){
+    price=parseInt(price)
+        allListings=await Listing.find({price:{$lte:price}});
+        return res.render("./listings/index.ejs",{allListings});
+    }
     if(!searchItem){
         searchItem="showall"
         allListings = await Listing.find({});
     }else{
         searchItem=searchItem.toLowerCase();
         allListings = await Listing.find({catagory:searchItem});
-        console.log(allListings.length,"hi")
         if(allListings.length==0){
             req.flash("error",`No listing available on your request`);
             return res.redirect("/listings")
         }
     }
     // console.log(searchItem,allListings)
-    res.render("./listings/index.ejs",{allListings,searchItem});
+
+    res.render("./listings/index.ejs",{allListings});
 }
 
 module.exports.renderNewForm=(req,res)=>{
@@ -73,11 +78,8 @@ console.log(listing)
 module.exports.createListing = async (req, res, next) => {
     let url = req.file.path;
     let filename = req.file.filename;
-
     const newlisting = new Listing(req.body.listing);
     newlisting.catagory=newlisting.country.toLowerCase();
-
-    // ✅ get coordinates from location
     const coordinate = await getCoordinates(newlisting.location);
 
     // 🚨 if location not found
@@ -110,4 +112,3 @@ module.exports.destroyListing=async(req,res,next)=>{
     req.flash("success","listing delete successfully");
     res.redirect("/listings");
 }
-   

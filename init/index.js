@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongo_url='mongodb://127.0.0.1:27017/wanderlust';
+const mongo_url="mongodb://127.0.0.1:27017/wanderlust";
 const Listing=require('../models/listing.js');
 const initData=require("./data.js");
 
@@ -21,7 +21,8 @@ const initDB = async () => {
     initData.data = initData.data.map((obj) => ({
         ...obj,
         catagory:"india",
-        owner:"69b29e6e5c6009a7dc65ebe4",
+        category2:"castle",
+        owner:"69bbda35cd7c104bcaa563a7",
         geometry: {
         type: "Point",
         coordinates: [0, 0], // fallback

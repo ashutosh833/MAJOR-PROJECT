@@ -33,7 +33,7 @@
         <a class="nav-link" href="/listings">Explore</a>
        
       </div>
-      <div class="searchBox">
+      <div class="navbar-nav searchBox">
         <form action="/listings" method="get">
         <input type="text" id="searchHere" placeholder="search listing based on country" class="searchBar" name="searchItem">
        <label for="searchHere"><button  class="searchBtn">
@@ -54,3 +54,15 @@
     </div>
   </div>
 </nav>
+<style>
+  @media(max-width:500px){
+    .searchBox{
+      display: none;
+    }
+      .container-fluid{
+        background-color: rgb(255, 255, 255) !important;
+        z-index: 1000;
+      }
+    }
+  
+</style>

@@ -1,7 +1,7 @@
 <%layout("/layouts/boilerplate")%>
 
 <body>
-    <div class="card show-card col-6 offset-3">
+    <div class="card show-card col-md-6 offset-md-3">
     <h3><b><%=showListing.title%></b></h3>
   <img src="<%=showListing.image.url%>" class="card-img-top mb-2" style=" height:25rem;" alt="listings">
   <div class="card-body">
@@ -12,11 +12,11 @@
         <p class="card-text"></p><%=showListing.country%></p>
     <%if(currUser&&currUser._id.equals(showListing.owner._id)){%>   
         <div class="btns ">
-            <a class="btn edit-btn btn-dark col-1 offset-3" style="text-decoration: none;" href="/listings/<%=showListing._id%>/edit">
+            <a class="btn edit-btn btn-dark " style="text-decoration: none;" href="/listings/<%=showListing._id%>/edit">
                 edit
             </a>
             <form action="/listings/<%=showListing._id%>?_method=DELETE" method="post">
-                <button class="btn del-btn btn-dark col-2 offset-3">delete</button>
+                <button class="btn  btn-danger ">delete</button>
             </form>
         </div>
     <%}%>
@@ -24,7 +24,7 @@
 </div>
 
  
-<div class="col-6 offset-3">
+<div class="col-md-6 offset-md-3">
     <hr>
      <% if(currUser){%>
 
@@ -73,7 +73,7 @@
      <h4 style="text-align:center;">All Reviews</h4><hr>
     <div class="reviews">
         <%for(review of showListing.reviews){%>
-                 <div class="card border col-6 mb-3" style="width: 18rem;">
+                 <div class="card border col-md-6 mb-3" style="width: 18rem;">
                     <div class="card-body review-card">
                 <h5 class="card-title">@<%=review.commenter.username%></h5>
                <small class="text-muted">
@@ -87,7 +87,7 @@
 
 <% if(currUser && review.commenter && review.commenter._id.equals(currUser._id)) { %>
   <form class="mb-3" action="/listings/<%=showListing._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
-        <button class="btn btn-dark">Delete</button>
+        <button class="btn btn-dark"><i class="fa-solid fa-box-archive"></i></button>
   </form>
 <%}%>
 
@@ -112,3 +112,4 @@
     const tileUrl = "<%= tileUrl %>";
 </script>
 </body>
+

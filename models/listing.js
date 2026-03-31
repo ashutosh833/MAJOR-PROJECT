@@ -26,6 +26,10 @@ const listingSchema=new Schema({
         type:String,
         enum:["india","china","america","europe","dubai","australia","south africa","venezuella"]
     },
+    category2:{
+        type:String,
+        enum:["castle","mountain","iconic cities","farm","camp","amazing pool"]
+    },
     geometry: {
         type: {
         type: String, // Don't do `{ location: { type: String } }`

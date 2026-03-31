@@ -8,10 +8,6 @@ module.exports.createReview=async(req,res)=>{
     listing.reviews.push(newReview);
     await newReview.save();
     await listing.save();
-    if(!newReview.rating){
-        req.flash("error","please give star rating");
-        res.redirect(`/listings/${listing._id}`); 
-    }
     req.flash("success","your review is added");
     res.redirect(`/listings/${listing._id}`);
 };
