@@ -9,7 +9,7 @@ module.exports.listingSchema=Joi.object({
        image:{
         url:Joi.string().required().allow("",null)
        },
-    //    category2:Joi.string()
+       category2: Joi.string().allow("").optional()
     }).required()
 })
 module.exports.reviewSchema=Joi.object({
