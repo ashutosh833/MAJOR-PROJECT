@@ -71,7 +71,7 @@ module.exports.updateListing = async (req, res, next) => {
         listing.image = { url, filename };
         await listing.save();
     }
-console.log(listing)
+
     req.flash("success", "listing updated successfully");
     res.redirect(`/listings/${id}`);
 };

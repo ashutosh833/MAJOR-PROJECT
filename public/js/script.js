@@ -58,6 +58,19 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
   });
 });
 
+//collapse searchbar
+let collapsebtn=document.querySelector(".navbar-toggler")
+let searchBox=document.querySelector(".searchBox")
+collapsebtn.addEventListener("click",()=>{
+  console.log("hello world")
+  // let style=searchBox.style.display
+  if(searchBox.style.display=="none"){
+      searchBox.style.display="block"
+  }else{
+  searchBox.style.display="none"
+  }
+})
+
 
 
 

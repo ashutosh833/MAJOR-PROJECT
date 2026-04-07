@@ -7,7 +7,8 @@
           color: black;
      }
 </style>
-<div id="filters">
+<div class="categoryFilter">
+     <div id="filters">
      <a href="/listings/trending">
      <div class="filter">
           <i class="fa-solid fa-fire" id="icon"></i>
@@ -55,12 +56,14 @@
         <p>camping</p>
    </div>
    </a>
-    <div class="taxToggle">
+    </div>
+    <div class="taxesAndFilter">
+     <div class="taxToggle">
         <div class="form-check-reverse form-switch"> 
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
          <label class="form-check-label" for="flexSwitchCheckDefault">display total after taxes</label>
-    </div>
-    </div>
+    </div>    
+</div>
 <div class="dropdown">
   <button class="btn custom-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
     Filter Price
@@ -71,6 +74,7 @@
     <li><a class="dropdown-item" href="?price=20000">Under ₹20000</a></li>
     <li><a class="dropdown-item" href="?price=50000">Under ₹50000</a></li>
   </ul>
+</div>
 </div>
 </div>
 <style>

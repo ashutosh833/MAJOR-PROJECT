@@ -119,7 +119,7 @@ body{
 
 }
 .review-card{
-    padding: 0.5rem 1rem 0rem 1rem !important;
+    padding: 0.5rem 0.5rem 0rem 0.5rem !important;
 }
 
 #map{
@@ -150,12 +150,20 @@ body{
     justify-content: center;
     align-items: center;
     border: .1rem solid black;
-    width: 18rem;
+    width: 15rem;
     height: 3rem;
     border-radius: 1rem;
 }
 .taxRate{
     display: none;
+}
+.taxesAndFilter{
+    display: flex;
+    margin-bottom: 15px;
+}
+.categoryFilter{
+    width:100% !important;
+    display: flex !important;
 }
         /* filter styling end */
 /*dropdown start*/
@@ -225,14 +233,40 @@ option {
 }
 /*selection end*/
 @media(max-width:500px){
-    #filters{
-        background-color: #ffffff;
-        padding: 10px;
-        width: 95vw;
-        height: 300px;
-        flex-wrap: wrap;
-    }
-    .filter{
-        margin-right: 1rem;
-    }
+/* scrollbar */
+#filters {
+    width: auto !important;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width:thin;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+#filters::-webkit-scrollbar{
+    height: 6px;
+}
+#filters::-webkit-scrollbar-track{
+    background-color: #eee;
+    border-radius: 10px;
+}
+#filters::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 10px;
+}
+#filters::-webkit-scrollbar-thumb{
+    background-color:#555;
+}
+#filters .filter{
+    min-width: 20px;
+    text-align: center;
+    scroll-snap-align: start;
+    cursor: pointer;
+}
+.categoryFilter{
+    gap: 10px;
+    width:100% !important;
+    display: flex !important;
+    flex-direction: column;
+}
+  
 }
